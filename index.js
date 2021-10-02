@@ -2,6 +2,8 @@ const { Student, sequelize } = require('./models');
 const { Op } = require('sequelize');
 
 (async function () {
+  await sequelize.sync({ force: true });
+
   const newStudent = {
     firstName: 'Stud1',
     lastName: 'SurnameStud1',

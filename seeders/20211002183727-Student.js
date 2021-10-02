@@ -15,6 +15,7 @@ for (let i = 0; i <= 100; i++) {
     isPrivatePayed: Math.random() > 0.25 ? false : true,
     discount: Math.trunc(Math.random() * 5),
     gender: Math.random() > 0.5 ? 'male' : 'female',
+    GroupId: Math.random() > 0.5 ? 1 : 2,
     createdAt: new Date(),
     updatedAt: new Date(),
   });
