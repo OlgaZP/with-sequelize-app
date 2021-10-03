@@ -1,18 +1,18 @@
-const { Student, sequelize } = require('./models');
+const { Student, Group, Subject, sequelize } = require('./models');
 const { Op } = require('sequelize');
 
 (async function () {
-  await sequelize.sync({ force: true });
+  // await sequelize.sync({ force: true });
 
-  const newStudent = {
-    firstName: 'Stud1',
-    lastName: 'SurnameStud1',
-    email: 'stud1@gmail.com',
-    birthday: '2004-08-30',
-    isPrivatePayed: false,
-    discount: 0,
-    gender: 'male',
-  };
+  // const newStudent = {
+  //   firstName: 'Stud1',
+  //   lastName: 'SurnameStud1',
+  //   email: 'stud1@gmail.com',
+  //   birthday: '2004-08-30',
+  //   isPrivatePayed: false,
+  //   discount: 0,
+  //   gender: 'male',
+  // };
 
   // C - INSERT
   // const createdStudent = await Student.create(newStudent, { raw: true });
@@ -128,4 +128,21 @@ const { Op } = require('sequelize');
   //   where: { id: 95 },
   // });
   // console.log(`deletedStudents`, deletedStudents);
+  try {
+    //   const foundStuds = await Student.findAll({
+    //     where: { isPrivatePayed: true },
+    //     include: {
+    //       model: Group,
+    //       where: { id: 2 },
+    //     },
+    //     raw: true,
+    //   });
+
+    //   console.log(`foundStuds`, foundStuds);
+    const [s] = await Subject.findAll({ where: { id: 2 } });
+    const subjOfStud2 = await s.getStudents({ raw: true });
+    console.log(`subjOfStud2`, subjOfStud2);
+  } catch (err) {
+    //   console.log(`err`, err);
+  }
 })();

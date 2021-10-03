@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const { Student } = require('./student');
 module.exports = (sequelize, DataTypes) => {
   class Subject extends Model {
     /**
@@ -9,10 +10,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       // define association here
+      Subject.belongsToMany(models.Student, {
+        through: models.StudentSubjects,
+      });
     }
   }
   Subject.init(
     {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,

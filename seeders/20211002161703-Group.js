@@ -9,11 +9,15 @@ module.exports = {
           code: 'ITIT2021',
           department: 'Software Development',
           enteredAt: new Date(2021, 8, 1),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           code: 'ITIT2020',
           department: 'Software Development',
           enteredAt: new Date(2020, 8, 1),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
